@@ -8,16 +8,28 @@ let turn = "X";
 
 // FUNCTION TO CHANGE THE TURN 
 const changeTurn = () =>{
-    return turn = "X"?"0":"X";
+    if(turn=='X')
+    return turn="0";
+    else
+    return turn="X";
 }
 
 // FUNCTION TO CHECK FOR A WIN 
 const checkWin = () =>{
 
 }
-
 // GAME LOGIC 
 let boxes = document.getElementsByClassName("box");
-Array.from(boxes).forEach(element => {
+Array.from(boxes).forEach((element) => {
     let boxtext= element.querySelector('.boxtext');
+    element.addEventListener('click',()=>{
+        if(boxtext.innerText === '')
+        {
+            boxtext.innerText=turn;
+            changeTurn();
+            ting.play();
+            checkWin();
+            document.getElementsByClassName("info")[0].innerText = "Turn for "+turn;
+        }
+    })
 })
