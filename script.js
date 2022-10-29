@@ -15,16 +15,33 @@ const changeTurn = () => {
 // FUNCTION TO CHECK FOR A WIN 
 const checkWin = () => {
     let boxtext = document.getElementsByClassName('boxtext');
-    let wins = [
-        [0, 1, 2,22,4, 4.8, 0],
-        [3, 4, 5,22,4,14.8,0],
-        [6, 7, 8,22,4,25,0],
-        [0, 3, 6,22,-6,14.8,90],
-        [1, 4, 7,22,4,14.8,90],
-        [2, 5, 8,22,14,14.5,90],
-        [0, 4, 8,28,0,14,45],
-        [2, 4, 6,28,2,14,-45],
-    ]
+    let wins
+    if (!x.matches) {
+        wins = [
+            [0, 1, 2, 22, 4, 4.8, 0],
+            [3, 4, 5, 22, 4, 14.8, 0],
+            [6, 7, 8, 22, 4, 25, 0],
+            [0, 3, 6, 22, -6, 14.8, 90],
+            [1, 4, 7, 22, 4, 14.8, 90],
+            [2, 5, 8, 22, 14, 14.5, 90],
+            [0, 4, 8, 28, 0, 14, 45],
+            [2, 4, 6, 28, 2, 14, -45],
+        ]
+    }
+    else {
+        wins = [
+            [0, 1, 2, 56, 9.4, 12, 0],
+            [3, 4, 5, 56, 9.4, 36.8, 0],
+            [6, 7, 8, 56, 9.4, 62, 0],
+            [0, 3, 6, 56, -15.8, 37, 90],
+            [1, 4, 7, 56, 9.4, 36, 90],
+            [2, 5, 8, 56, 34.6, 36, 90],
+            [0, 4, 8, 74, 1.3, 38, 45],
+            [2, 4, 6, 74, -1, 38, -45],
+        ]
+    }
+
+    console.log(wins[0][5])
     wins.forEach(e => {
         if ((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "")) {
             document.querySelector(".info").innerText = boxtext[e[0]].innerText + " Won";
@@ -66,3 +83,14 @@ reset.addEventListener('click', () => {
 
 
 })
+function myFunction(x) {
+    if (x.matches) { // If media query matches
+        document.body.style.backgroundColor = "yellow";
+    } else {
+        document.body.style.backgroundColor = "pink";
+
+    }
+}
+let x = window.matchMedia("(max-width:560px)")
+myFunction(x);
+x.addListener(myFunction);

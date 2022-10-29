@@ -38,6 +38,7 @@ nav ul li {
     position: relative;
 }
 .line{
+    transform: translate(10vw,10vw) rotate(0deg);
     background-color: black;
     height: 3px;
     width: 0vw;
@@ -111,7 +112,7 @@ nav ul li {
         margin-top: 3rem;
     }
 }
-@media (max-width:400px) {
+@media (max-width:500px) {
     .container {
         grid-template-rows: repeat(3, 25vw);
         grid-template-columns: repeat(3, 25vw);
