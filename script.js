@@ -48,6 +48,7 @@ const checkWin = () => {
             document.querySelector('.imgBox').getElementsByTagName('img')[0].style.width = '200px';
             document.querySelector('.line').style.width = `${e[3]}vw`;
             document.querySelector('.line').style.transform = `translate(${e[4]}vw, ${e[5]}vw) rotate(${e[6]}deg)`;
+            gameover.play();
             lock =1;
         }
     })
