@@ -1,5 +1,5 @@
 console.log("Welcome to Tic Tac Toe")
-
+let lock=0;
 let music = new Audio('./music/music.mp3');
 // music.play();
 let ting = new Audio('./music/ting.mp3');
@@ -41,7 +41,6 @@ const checkWin = () => {
         ]
     }
 
-    console.log(wins[0][5])
     wins.forEach(e => {
         if ((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "")) {
             document.querySelector(".info").innerText = boxtext[e[0]].innerText + " Won";
@@ -49,6 +48,7 @@ const checkWin = () => {
             document.querySelector('.imgBox').getElementsByTagName('img')[0].style.width = '200px';
             document.querySelector('.line').style.width = `${e[3]}vw`;
             document.querySelector('.line').style.transform = `translate(${e[4]}vw, ${e[5]}vw) rotate(${e[6]}deg)`;
+            lock =1;
         }
     })
 }
@@ -57,7 +57,7 @@ let boxes = document.getElementsByClassName("box");
 Array.from(boxes).forEach((element) => {
     let boxtext = element.querySelector('.boxtext');
     element.addEventListener('click', () => {
-        if (boxtext.innerText === '') {
+        if (boxtext.innerText === '' && lock==0) {
             boxtext.innerText = turn;
             turn = changeTurn();
             ting.play();
@@ -80,6 +80,7 @@ reset.addEventListener('click', () => {
     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
     document.querySelector('.imgBox').getElementsByTagName('img')[0].style.width = '0px';
     document.querySelector('.line').style.width = `0vw`;
+    lock=0;
 
 
 })
