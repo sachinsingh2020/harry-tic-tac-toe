@@ -25,6 +25,7 @@ nav ul li {
 }
 
 .gameContainer {
+    position: relative;
     display: flex;
     justify-content: center;
     margin-top: 3rem;
@@ -98,6 +99,12 @@ nav ul li {
     font-size: 15px;
     font-weight: bolder;
 }
+#volumeButton{
+    position: absolute;
+    font-size: 40px;
+    top: 15vw;
+    right: 15vw;
+}
 .gameInfoContainer{
     display: flex;
     justify-content: space-around;
@@ -122,5 +129,22 @@ nav ul li {
     }
     .box{
         font-size: 24vw;
+    }
+}
+@media (max-width:700px) {
+    #volumeButton{
+        top: 25vw;
+    }
+}
+@media (max-width:500px) {
+    .gameContainer{
+        margin-top:6rem;
+    }
+    .gameInfoContainer{
+        justify-content: space-evenly;
+    }
+    #volumeButton{
+       top:-20vw;
+       font-size: 30px;
     }
 }

@@ -1,16 +1,31 @@
 console.log("Welcome to Tic Tac Toe")
 let lock=0;
 let music = new Audio('./music/music.mp3');
-music.play();
 let ting = new Audio('./music/ting.mp3');
 let gameover = new Audio('./music/gameover.mp3');
 let isgameover = false;
 let turn = "X";
-
 // FUNCTION TO CHANGE THE TURN 
 const changeTurn = () => {
     return turn === "X" ? "0" : "X";
 }
+
+let volumeButton = document.getElementById('volumeButton');
+volumeButton.addEventListener('click',(e)=>{
+    if(e.target.classList.contains('fa-volume-xmark'))
+    {
+        e.target.classList.remove('fa-volume-xmark');
+        e.target.classList.add('fa-volume-high');
+        music.play();
+    }
+    else
+    {
+        e.target.classList.remove('fa-volume-high');
+        e.target.classList.add('fa-volume-xmark');
+        music.pause();
+    }
+
+})
 
 // FUNCTION TO CHECK FOR A WIN 
 const checkWin = () => {
@@ -48,8 +63,6 @@ const checkWin = () => {
             document.querySelector('.imgBox').getElementsByTagName('img')[0].style.width = '200px';
             document.querySelector('.line').style.width = `${e[3]}vw`;
             document.querySelector('.line').style.transform = `translate(${e[4]}vw, ${e[5]}vw) rotate(${e[6]}deg)`;
-            music.pause();
-            gameover.play();
             lock =1;
         }
     })
@@ -82,8 +95,6 @@ reset.addEventListener('click', () => {
     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
     document.querySelector('.imgBox').getElementsByTagName('img')[0].style.width = '0px';
     document.querySelector('.line').style.width = `0vw`;
-    gameover.pause();
-    music.play();
     lock=0;
 
 
